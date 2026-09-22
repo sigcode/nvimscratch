@@ -16,7 +16,6 @@ vim.pack.add({
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/goolord/alpha-nvim" },
   { src = "https://github.com/echasnovski/mini.pairs" },
-  { src = "https://github.com/Exafunction/codeium.vim" },
 })
 
 require("catppuccin").setup({
@@ -268,13 +267,3 @@ local lazygit = require("toggleterm.terminal").Terminal:new({
 vim.keymap.set("n", "<leader>gg", function() lazygit:toggle() end, { desc = "Lazygit" })
 
 require("mini.pairs").setup()
-
--- codeium.vim: kein Tab-Konflikt mit blink.cmp
-vim.g.codeium_no_map_tab = true
-vim.g.codeium_disable_bindings = 1
-
-vim.keymap.set("i", "<C-l>", function() return vim.fn["codeium#Accept"]() end,              { expr = true, silent = true, desc = "AI: Accept suggestion" })
-vim.keymap.set("i", "<C-j>", function() return vim.fn["codeium#AcceptNextWord"]() end,      { expr = true, silent = true, desc = "AI: Accept next word" })
-vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#Clear"]() end,               { expr = true, silent = true, desc = "AI: Clear suggestion" })
-vim.keymap.set("i", "<M-]>", function() return vim.fn["codeium#CycleCompletions"](1) end,   { expr = true, silent = true, desc = "AI: Next suggestion" })
-vim.keymap.set("i", "<M-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end,  { expr = true, silent = true, desc = "AI: Prev suggestion" })
